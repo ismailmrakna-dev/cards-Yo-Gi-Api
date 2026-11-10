@@ -22,15 +22,24 @@ export function loadData(){
 }
 function transObj(obj){
     const ob={
-    id: obj,
-    name: obj,
-    type: obj,
-    monsterType:obj,
-    race: obj,
-    stats: { atk: obj, def: obj, level: obj },
-    image: obj ,
-    description: obj,
-    effect: obj,
+
+    id: obj.id,
+
+    name: obj.name,
+
+    type: obj.attribute,
+
+    monsterType:obj.frametype,
+
+    race: obj.race,
+
+    stats: { atk: obj.atk, def: obj.def, level: obj.level },
+
+    image: obj.card_images[0].image_url,
+
+    description: obj.desc,
+
+    effect: obj.type,
   }
   return ob
 }
