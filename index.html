@@ -68,32 +68,42 @@
     <div class="grid grid-cols-1 gap-8 mt-2 w-full md:gap-10 lg:grid-cols-2 lg:grid-cols-[70%_30%] lg:gap-10">
       <!-- cards -->
       <!-- ===================== GRILLE DES CRÉATURES ===================== -->
-      <section id="cardsMonster" aria-label="Créatures" class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-7 
-      lg:grid-cols-3 lg:gap-7 lg:max-h-350 lg:h-340 lg:overflow-scroll ">
-        <!-- card 0 -->
-        <article id="cardmonster"
-          class="hidden h-150 flex flex-col gap-3 bg-[url('../images/bg-card.jpg')] bg-cover bg-center rounded-md p-3 pb-4 hover:scale-105 hover:shadow-lg hover:shadow-[#F5B942]/50 transition-all duration-300">
-          <div class="relative flex h-2/3 items-center text-white justify-center rounded-xl bg-[#191970]">
-            <img src="" alt="" class="h-full w-full object-cover rounded-xl">
-            <span class="absolute left-3 top-2 font-mono text-sm text-white"></span>
-          </div>
-          <div class="flex flex-col items-center justify-between gap-2">
-            <h3 class="font-display text-xl text-white font-semibold"></h3>
-            <div class="flex gap-2 items-center justify-center">
-              <span class="rounded-full bg-[#F5B942] px-3 py-1 text-sm font-bold text-white"></span>
-              <span class="rounded-full bg-[#191970] px-3 py-1 text-sm font-bold text-white"></span>
+      <div class="w-full">
+        <section id="cardsMonster" aria-label="Créatures" class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-7 
+        lg:grid-cols-3 lg:gap-7 lg:max-h-350 lg:h-340 lg:overflow-scroll ">
+          <!-- card 0 -->
+          <article id="cardmonster"
+            class="hidden h-150 flex flex-col gap-3 bg-[url('../images/bg-card.jpg')] bg-cover bg-center rounded-md p-3 pb-4 hover:scale-105 hover:shadow-lg hover:shadow-[#F5B942]/50 transition-all duration-300">
+            <div class="relative flex h-2/3 items-center text-white justify-center rounded-xl bg-[#191970]">
+              <img src="" alt="" class="h-full w-full object-cover rounded-xl">
+              <span class="absolute left-3 top-2 font-mono text-sm text-white"></span>
             </div>
-          </div>
-          <p class="text-sm mx-auto text-white font-bold"></p>
-          <p class="text-sm mx-auto font-bold text-white shadow-md"></p>
-          <button type="button"
-            class="bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90">Ajouter à
-            l'équipe</button>
-        </article>
+            <div class="flex flex-col items-center justify-between gap-2">
+              <h3 class="font-display text-xl text-white font-semibold"></h3>
+              <div class="flex gap-2 items-center justify-center">
+                <span class="rounded-full bg-[#F5B942] px-3 py-1 text-sm font-bold text-white"></span>
+                <span class="rounded-full bg-[#191970] px-3 py-1 text-sm font-bold text-white"></span>
+              </div>
+            </div>
+            <p class="text-sm mx-auto text-white font-bold"></p>
+            <p class="text-sm mx-auto font-bold text-white shadow-md"></p>
+            <button type="button"
+              class="bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90">Ajouter à
+              l'équipe</button>
+          </article>
 
 
 
-      </section>
+        </section>
+        <!-- btn Load More-->
+
+        <div id="btn-load" class="w-full mt-4 flex justify-center items-center gap-2">
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">1</button>
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">2</button>
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">3</button>
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">4</button>
+        </div>
+      </div>
 
       <!-- Selector showing & mon equipe-->
       <aside class="flex flex-col gap-6">

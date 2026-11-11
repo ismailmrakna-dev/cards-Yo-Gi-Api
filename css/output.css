@@ -228,26 +228,17 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
-  }
-  .mt-auto {
-    margin-top: auto;
-  }
-  .mr-auto {
-    margin-right: auto;
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
-  }
-  .mb-auto {
-    margin-bottom: auto;
-  }
-  .ml-auto {
-    margin-left: auto;
   }
   .block {
     display: block;
@@ -261,14 +252,8 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
   .aspect-square {
     aspect-ratio: 1 / 1;
-  }
-  .h-2 {
-    height: calc(var(--spacing) * 2);
   }
   .h-2\/3 {
     height: calc(2 / 3 * 100%);
@@ -327,17 +312,11 @@
   .flex-1 {
     flex: 1;
   }
-  .border-collapse {
-    border-collapse: collapse;
-  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .cursor-not-allowed {
     cursor: not-allowed;
-  }
-  .resize {
-    resize: both;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -411,10 +390,6 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -470,9 +445,6 @@
   }
   .bg-\[url\(\'\.\.\/images\/bg-header\.jpg\'\)\] {
     background-image: url('../images/bg-header.jpg');
-  }
-  .bg-\[url\(\'\.\.\/images\/card-02-darkest-sorcerer\.png\'\)\] {
-    background-image: url('../images/card-02-darkest-sorcerer.png');
   }
   .bg-cover {
     background-size: cover;
@@ -618,19 +590,12 @@
   .text-yellow-400 {
     color: var(--color-yellow-400);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .opacity-50 {
     opacity: 50%;
   }
   .shadow-md {
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .blur {
     --tw-blur: blur(8px);
@@ -716,18 +681,6 @@
     .lg\:col-span-4 {
       grid-column: span 4 / span 4;
     }
-    .lg\:m-3 {
-      margin: calc(var(--spacing) * 3);
-    }
-    .lg\:mr-4 {
-      margin-right: calc(var(--spacing) * 4);
-    }
-    .lg\:mr-6 {
-      margin-right: calc(var(--spacing) * 6);
-    }
-    .lg\:mr-8 {
-      margin-right: calc(var(--spacing) * 8);
-    }
     .lg\:mr-10 {
       margin-right: calc(var(--spacing) * 10);
     }
@@ -736,9 +689,6 @@
     }
     .lg\:max-h-350 {
       max-height: calc(var(--spacing) * 350);
-    }
-    .lg\:w-96 {
-      width: calc(var(--spacing) * 96);
     }
     .lg\:w-full {
       width: 100%;
@@ -912,11 +862,6 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -1013,7 +958,6 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
