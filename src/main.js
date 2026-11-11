@@ -1,5 +1,5 @@
 
-import { creerCards } from "./ui.js"
+import { creerCards, searchNom,filtreType } from "./ui.js"
 import { } from "./storage.js"
 import { loadData, getData } from "./services/api.js"
 
@@ -13,9 +13,7 @@ if (currentPage.includes("index.html")) {
 function initHomePages() {
     console.log("Home Page");
     ///  paginagtion creation of cards Monsters
-    getData(0)
-    const arr = loadData()
-    creerCards(arr)
+    
 
     document.querySelector('#btns-load').addEventListener("click", (event) => {
         const btnCLick = event.target.closest(".loadMore")
@@ -34,6 +32,16 @@ function initHomePages() {
         const arr = loadData()
         console.log(arr)
         creerCards(arr)
+
+        //// call search & filter function
+        searchNom()
+        filtreType()
     })
+    getData(0)
+    const arr = loadData()
+    creerCards(arr)
+    searchNom()
+    filtreType()
+    
 
 }

@@ -148,25 +148,25 @@ function afficheDetail(monst) {
 // // La liste se met à jour pendant la saisie d'un nom
 // // (sans tenir compte des majuscules).
 // // -------------------------------------------------------------
-// function searchNom() {
-//   const search = document.querySelector("#search")
-//   const cards = document.querySelectorAll(".cardMonst")
-//   search.addEventListener("input", (event) => {
-//     const name = event.target.value.toLowerCase().trim()
-//     cards.forEach((card) => {
-//       const text = card.querySelector("h3")
-//       const targCard = text.textContent.toLowerCase()
-//       if (targCard.includes(name)) {
-//         card.style.display = ""
+export function searchNom() {
+  const search = document.querySelector("#search")
+  const cards = document.querySelectorAll(".cardMonst")
+  search.addEventListener("input", (event) => {
+    const name = event.target.value.toLowerCase().trim()
+    cards.forEach((card) => {
+      const text = card.querySelector("h3")
+      const targCard = text.textContent.toLowerCase()
+      if (targCard.includes(name)) {
+        card.style.display = ""
 
-//       }
-//       else card.style.display = "none"
-//     })
+      }
+      else card.style.display = "none"
+    })
 
 
-//   })
-// }
-// searchNom()
+  })
+}
+
 
 
 // // -------------------------------------------------------------
@@ -175,38 +175,38 @@ function afficheDetail(monst) {
 // // « Tous » réinitialise le filtre.
 // // La recherche et le filtre fonctionnent ENSEMBLE.
 // // -------------------------------------------------------------
-// function filtreType() {
-//   const filter = document.querySelector("#filters")
-//   const cards = document.querySelectorAll(".cardMonst")
-//   filter.addEventListener("click", (event) => {
-//     const clickbtn = event.target.closest("#btn-filter");
-//     if (!clickbtn) return
-//     // 3. Filter the items
-//     filter.querySelectorAll("#btn-filter").forEach(btn => btn.style.background = "white")
-//     const sortBtn = document.querySelector("#btn-sort");
-//     if (sortBtn) {
-//       sortBtn.style.background = "";
-//       sortBtn.classList.remove("active");
-//     }
-//     clickbtn.style.background = "#F5B942"
-//     const filterValue = clickbtn.textContent.toLowerCase().trim()
-//     cards.forEach((card) => {
-//       if (filterValue === "all") {
-//         card.style.display = ""
-//       }
-//       else {
-//         const text = card.querySelector("#sptypecard")
-//         const targCard = text.textContent.toLowerCase()
-//         if (targCard === filterValue) {
-//           card.style.display = ""
-//         }
-//         else card.style.display = "none"
-//       }
+export function filtreType() {
+  const filter = document.querySelector("#filters")
+  const cards = document.querySelectorAll(".cardMonst")
+  filter.addEventListener("click", (event) => {
+    const clickbtn = event.target.closest("#btn-filter");
+    if (!clickbtn) return
+    // 3. Filter the items
+    filter.querySelectorAll("#btn-filter").forEach(btn => btn.style.background = "white")
+    const sortBtn = document.querySelector("#btn-sort");
+    if (sortBtn) {
+      sortBtn.style.background = "";
+      sortBtn.classList.remove("active");
+    }
+    clickbtn.style.background = "#F5B942"
+    const filterValue = clickbtn.textContent.toLowerCase().trim()
+    cards.forEach((card) => {
+      if (filterValue === "all") {
+        card.style.display = ""
+      }
+      else {
+        const text = card.querySelector("#sptypecard")
+        const targCard = text.textContent.toLowerCase()
+        if (targCard === filterValue) {
+          card.style.display = ""
+        }
+        else card.style.display = "none"
+      }
 
-//     })
-//   })
-// }
-// filtreType()
+    })
+  })
+}
+
 
 
 // // -------------------------------------------------------------
