@@ -8,6 +8,7 @@
 // let equipeMembers = []
 export  function creerCards (creatures) {
   const containerCard = document.querySelector("#cardsMonster")
+  containerCard.innerHTML=""
   const monsters = creatures.slice()
   monsters.forEach((monst) => {
     let stars = ""
