@@ -1,5 +1,5 @@
 export async function getData() {
-  const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0%20:%20https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark%20Magician";
+  const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -7,8 +7,8 @@ export async function getData() {
     }
 
     const result = await response.json();
-    console.log(result)
-    localStorage.setItem("data-api",JSON.stringify(result.data))
+    const data=result.data.map((obj)=>transObj(obj))
+    localStorage.setItem("data-api",JSON.stringify(data))
  
     
     
@@ -23,23 +23,23 @@ export function loadData(){
 function transObj(obj){
     const ob={
 
-    id: obj.id,
+    id: obj.id, //fix
 
-    name: obj.name,
+    name: obj.name, //fix
 
-    type: obj.attribute,
+    type: obj.attribute ?? null, //no fix
 
-    monsterType:obj.frametype,
+    monsterType:obj.frametype, //fix
 
-    race: obj.race,
+    race: obj.race, //fix
 
-    stats: { atk: obj.atk, def: obj.def, level: obj.level },
+    stats: { atk: obj.atk ?? 0, def: obj.def ?? 0, level: obj.level ?? 0 }, //no fix
 
-    image: obj.card_images[0].image_url,
+    image: obj.card_images[0].image_url, //fix
 
-    description: obj.desc,
+    description: obj.desc, //fix
 
-    effect: obj.type,
+    effect: obj.type, // fix
   }
   return ob
 }
