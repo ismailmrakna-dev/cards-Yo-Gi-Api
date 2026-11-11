@@ -11,7 +11,7 @@ if(currentPage.includes("index.html")){
 
 function initHomePages(){
     console.log("Home Page");
-    getData()
+    getData(60)
 
     const arr=loadData()
     let cmp=0
