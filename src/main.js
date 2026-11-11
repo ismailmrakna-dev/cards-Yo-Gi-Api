@@ -1,8 +1,8 @@
 
-import {} from "./ui.js"
+import {creerCards} from "./ui.js"
 import {} from "./storage.js"
 import {loadData , getData} from "./services/api.js"
-import {creerCards} from "../script.js"
+
 const currentPage=window.location.pathname;
 
 if(currentPage.includes("index.html")){
