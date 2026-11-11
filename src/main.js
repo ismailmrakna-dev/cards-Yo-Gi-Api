@@ -18,5 +18,6 @@ function initHomePages(){
     for( const obj  of arr ){ cmp++
         console.log(cmp, obj)
     }
+    creerCards(arr)
 
 }
