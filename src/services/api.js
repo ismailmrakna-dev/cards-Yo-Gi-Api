@@ -29,7 +29,7 @@ function transObj(obj){
 
     type: obj.attribute ?? null, //no fix
 
-    monsterType:obj.frametype, //fix
+    monsterType:obj.frameType, //fix
 
     race: obj.race, //fix
 
