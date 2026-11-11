@@ -32,6 +32,7 @@ function initHomePages() {
 
         getData(obj[offset])
         const arr = loadData()
+        console.log(arr)
         creerCards(arr)
     })
 

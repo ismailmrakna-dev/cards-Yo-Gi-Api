@@ -6,6 +6,15 @@
 // // Une carte GitHub Projects et au moins un commit par fonctionnalité.
 // loadData()
 // let equipeMembers = []
+const typesCard={
+  DARK:"./images/DARK.svg",
+  LIGHT:"./images/LIGHT.svg",
+  FIRE:"./images/FIRE.svg",
+  DIVINE:"./images/DIVINE.svg",
+  WATER:"./images/WATER.svg",
+  EARTH:"./images/EARTH.svg",
+  WIND:"./images/WIND.svg"
+  }
 export  function creerCards (creatures) {
   const containerCard = document.querySelector("#cardsMonster")
   containerCard.innerHTML=""
@@ -65,74 +74,74 @@ export  function creerCards (creatures) {
 // // Un clic sur une carte ouvre le panneau de détail :
 // // image, description, et statistiques affichées en barres.
 // // -------------------------------------------------------------
-// function afficheDetail(monst) {
-//   const detail = document.querySelector("#detailCard")
-//   const image = detail.querySelector("img")
-//   const idMonster = detail.querySelector("#spanId")
-//   const nom = detail.querySelector("h2")
-//   const imgType = detail.querySelector("#imgType")
-//   const type = detail.querySelector("#spanType")
-//   const monstype = detail.querySelector("#spMonsterType")
-//   const race = detail.querySelector("#spRace")
+function afficheDetail(monst) {
+  const detail = document.querySelector("#detailCard")
+  const image = detail.querySelector("img")
+  const idMonster = detail.querySelector("#spanId")
+  const nom = detail.querySelector("h2")
+  const imgType = detail.querySelector("#imgType")
+  const type = detail.querySelector("#spanType")
+  const monstype = detail.querySelector("#spMonsterType")
+  const race = detail.querySelector("#spRace")
 
-//   const description = detail.querySelector("#pDescription")
-//   const effect = detail.querySelector("#spEffect")
-//   const lvl = detail.querySelector("#pLvl")
-//   const atk = detail.querySelector("#spAtk")
-//   const def = detail.querySelector("#spDef")
-//   const atkVal = detail.querySelector("#spAtkVal")
-//   const defVal = detail.querySelector("#spDefVal")
-//   let stars = ""
-//   for (let i = 0; i < monst.stats.level; i++) {
-//     stars += "⭐"
-//   }
-//   image.src = monst.image
-//   image.alt = monst.name
-//   nom.textContent = monst.name
-//   monstype.textContent = monst.monsterType
-//   race.textContent = monst.race
-//   idMonster.textContent = `#${monst.id} . Détail`
-//   type.textContent = monst.type
-//   for (const typec in typesCard) {
-//     if (typec === monst.type) {
-//       imgType.src = typesCard[typec]
-//       break
-//     }
-//   }
+  const description = detail.querySelector("#pDescription")
+  const effect = detail.querySelector("#spEffect")
+  const lvl = detail.querySelector("#pLvl")
+  const atk = detail.querySelector("#spAtk")
+  const def = detail.querySelector("#spDef")
+  const atkVal = detail.querySelector("#spAtkVal")
+  const defVal = detail.querySelector("#spDefVal")
+  let stars = ""
+  for (let i = 0; i < monst.stats.level; i++) {
+    stars += "⭐"
+  }
+  image.src = monst.image
+  image.alt = monst.name
+  nom.textContent = monst.name
+  monstype.textContent = monst.monsterType
+  race.textContent = monst.race
+  idMonster.textContent = `#${monst.id} . Détail`
+  type.textContent = monst.type
+  for (const typec in typesCard) {
+    if (typec === monst.type) {
+      imgType.src = typesCard[typec]
+      break
+    }
+  }
 
 
-//   description.textContent = monst.description
-//   if (monst.effect === null) {
-//     effect.textContent = "Aucune Effect"
-//   }
-//   else {
-//     effect.textContent = monst.effect
-//   }
-//   lvl.textContent = stars
-//   atkVal.textContent = monst.stats.atk
-//   let perA = Math.min((monst.stats.atk / 5000) * 100, 100)
-//   atk.style.width = perA + "%"
-//   let perD = Math.min(((monst.stats.def) / 5000) * 100, 100)
-//   defVal.textContent = monst.stats.def
-//   def.style.width = perD + "%"
+  description.textContent = monst.description
+  if (monst.effect === null) {
+    effect.textContent = "Aucune Effect"
+  }
+  else {
+    effect.textContent = monst.effect
+  }
+  lvl.textContent = stars
+  atkVal.textContent = monst.stats.atk
+  let perA = Math.min((monst.stats.atk / 5000) * 100, 100)
+  atk.style.width = perA + "%"
+  let perD = Math.min(((monst.stats.def) / 5000) * 100, 100)
+  defVal.textContent = monst.stats.def
+  def.style.width = perD + "%"
 
-//   const detailBt = document.querySelector("#detailCard button");
-//   detailBt.remove()
-//   const detailBtn=document.createElement("button")
-//   if (detailBtn) {
-//     detailBtn.innerHTML=""
-//     detailBtn.textContent = "Ajouter à l'équipe"
-//     detailBtn.className = " btn-ajouter bg-[#F5B942] p-2 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
-//     detailBtn.setAttribute("dataId", monst.id)
-//     detailBtn.addEventListener("click", (e) => {
-//       e.stopPropagation();
-//       addToEquipe(monst);
-//     });
-//     detail.appendChild(detailBtn)
-//   }
-//   buttonsUpdate();
+  const detailBt = document.querySelector("#detailCard .btn-show");
+  detailBt.innerHTML=""
+  const detailBtn=document.createElement("button")
+  if (detailBtn) {
+    detailBtn.innerHTML=""
+    detailBtn.textContent = "Ajouter à l'équipe"
+    detailBtn.className = " btn-ajouter bg-[#F5B942] w-full p-4 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
+    detailBtn.setAttribute("dataId", monst.id)
+    detailBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      addToEquipe(monst);
+    });
+    detailBt.appendChild(detailBtn)
+  }
+  // buttonsUpdate();
 
-// }
+}
 
 // // -------------------------------------------------------------
 // // 3. RECHERCHE
