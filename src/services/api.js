@@ -1,5 +1,5 @@
-export async function getData() {
-  const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0";
+export async function getData(offset=0) {
+  const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=${offset}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
