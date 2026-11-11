@@ -44,3 +44,17 @@ function transObj(obj){
   return ob
 }
 
+
+// search from api Data
+
+export async function searchNameApi(name){
+     const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+     const response= await fetch(url)
+     if(!response.ok){
+      throw new Error(`Response Error: ${response.status}`)
+     }
+     const result=await response.json()
+     const arr=result.data
+     const searchTarget=arr.filter(monst =>  monst.name.toLowerCase().includes(name.toLowerCase()));
+     console.log(searchTarget)
+}
