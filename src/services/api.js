@@ -9,8 +9,7 @@ export async function getData(offset=0) {
     const result = await response.json();
     const data=result.data.map((obj)=>transObj(obj))
     localStorage.setItem("data-api",JSON.stringify(data))
- 
-    
+    return data
     
   } catch (error) {
     console.error(error.message);
@@ -57,4 +56,15 @@ export async function searchNameApi(name){
      const arr=result.data
      const searchTarget=arr.filter(monst =>  monst.name.toLowerCase().includes(name.toLowerCase()));
      console.log(searchTarget)
+}
+export async function filterTypeApi(type){
+     const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+     const response= await fetch(url)
+     if(!response.ok){
+      throw new Error(`Response Error: ${response.status}`)
+     }
+     const result=await response.json()
+     const arr=result.data
+     const filterTarget=arr.filter(monst =>  monst.frameType===type);
+     console.log(filterTarget)
 }
