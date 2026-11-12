@@ -1,11 +1,11 @@
 
 import { creerCards, searchNom,filtreType } from "./ui.js"
 import { } from "./storage.js"
-import { loadData, getData ,searchNameApi } from "./services/api.js"
+import { loadData, getData ,searchNameApi,filterTypeApi } from "./services/api.js"
 
 let arr1 = [] 
 arr1= await getData(0)
-console.log(arr1)
+
 
 const currentPage = window.location.pathname;
 
@@ -17,12 +17,11 @@ function initHomePages() {
     console.log("Home Page");
     ///  paginagtion creation of cards Monsters
     
-    
+    filterTypeApi("water")
     searchNameApi("dark")
     document.querySelector('#btns-load').addEventListener("click", (event) => {
         const btnCLick = event.target.closest(".loadMore")
         let offset = btnCLick.textContent
-        console.log()
         const obj = {
             "1": 0,
             "2": 20,
@@ -34,7 +33,6 @@ function initHomePages() {
 
         getData(obj[offset])
         const arr = loadData()
-        console.log(arr)
         creerCards(arr)
 
         //// call search & filter function
@@ -46,5 +44,5 @@ function initHomePages() {
     creerCards(arr)
     searchNom()
     filtreType()
-    
+
 }

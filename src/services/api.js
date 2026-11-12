@@ -63,8 +63,12 @@ export async function filterTypeApi(type){
      if(!response.ok){
       throw new Error(`Response Error: ${response.status}`)
      }
-     const result=await response.json()
-     const arr=result.data
-     const filterTarget=arr.filter(monst =>  monst.frameType===type);
+     const result = await response.json()
+     let arr=result.data.map((obj) => transObj(obj))
+     
+     
+     const filterTarget=arr.filter((monst) =>{ 
+      if(!monst.type) return false
+      return monst.type.toLowerCase() === type.toLowerCase()});
      console.log(filterTarget)
 }
