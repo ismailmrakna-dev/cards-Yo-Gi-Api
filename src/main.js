@@ -1,5 +1,5 @@
 
-import { creerCards, searchNom,filtreType } from "./ui.js"
+import { creerCards, searchNom,filtreType, showtri ,addToEquipe, removeFromTeam ,buttonsUpdate,teamdisplay} from "./ui.js"
 import { } from "./storage.js"
 import { loadData, getData ,searchNameApi,filterTypeApi } from "./services/api.js"
 
@@ -38,11 +38,18 @@ function initHomePages() {
         //// call search & filter function
         searchNom()
         filtreType()
+        showtri(arr)
+        teamdisplay()
+        buttonsUpdate()
+
     })
     getData(0)
     const arr = loadData()
     creerCards(arr)
     searchNom()
     filtreType()
+    showtri(arr)
+    teamdisplay()
+    buttonsUpdate()
 
 }

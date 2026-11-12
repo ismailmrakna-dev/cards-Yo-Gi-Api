@@ -5,7 +5,7 @@
 // // Écrivez votre code ici, fonctionnalité par fonctionnalité.
 // // Une carte GitHub Projects et au moins un commit par fonctionnalité.
 // loadData()
-// let equipeMembers = []
+let equipeMembers = []
 const typesCard={
   DARK:"./images/DARK.svg",
   LIGHT:"./images/LIGHT.svg",
@@ -131,7 +131,7 @@ function afficheDetail(monst) {
   if (detailBtn) {
     detailBtn.innerHTML=""
     detailBtn.textContent = "Ajouter à l'équipe"
-    detailBtn.className = " btn-ajouter bg-[#F5B942] w-full p-4 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
+    detailBtn.className = "btn-ajouter bg-[#F5B942] w-full p-4 rounded-md text-sm font-bold text-white hover:bg-[#F5B942]/90"
     detailBtn.setAttribute("dataId", monst.id)
     detailBtn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -397,90 +397,90 @@ export function filtreType() {
 // // écouteur sur la grille et UN SEUL sur l'équipe (délégation).
 // // -------------------------------------------------------------
 
-// function addToEquipe(monst) {
-//   const message = document.querySelector('#teamMessage')
-//   let alreadyAdded = false
-//   for (let i = 0; i < equipeMembers.length; i++) {
-//     if (equipeMembers[i].id === monst.id) {
-//       alreadyAdded = true
-//       break
-//     }
-//   }
-//   if (alreadyAdded) {
-//     message.textContent = `${monst.name} Est déjà dans votre equipe`
-//     message.style.color = "#f87171"
-//     return
-//   }
-//   if (equipeMembers.length >= 6) {
-//     message.textContent = "votre equipe est Pleine (Max:6 Cards)"
-//     message.style.color = "#f87171"
-//     return
-//   }
+export function addToEquipe(monst) {
+  const message = document.querySelector('#teamMessage')
+  let alreadyAdded = false
+  for (let i = 0; i < equipeMembers.length; i++) {
+    if (equipeMembers[i].id === monst.id) {
+      alreadyAdded = true
+      break
+    }
+  }
+  if (alreadyAdded) {
+    message.textContent = `${monst.name} Est déjà dans votre equipe`
+    message.style.color = "#f87171"
+    return
+  }
+  if (equipeMembers.length >= 6) {
+    message.textContent = "votre equipe est Pleine (Max:6 Cards)"
+    message.style.color = "#f87171"
+    return
+  }
 
-//   equipeMembers.push(monst)
-//   saveTeam()
-//   message.textContent = `${monst.name} a été ajouté à votre equipe`
-//   message.style.color = "#4ade80"
-//   teamdisplay()
-//   buttonsUpdate()
-// }
-// function teamdisplay() {
-//   const equipeCont = document.querySelector("#team #teamspace")
-//   const title = document.querySelector("#team h2")
-//   if (title) {
-//     title.textContent = `Mon équipe (${equipeMembers.length}/6)`;
-//     const equipe = document.querySelector("#team-count")
-//     equipe.textContent = `${equipeMembers.length}`
-//   }
-//   equipeCont.innerHTML = ""
-//   for (let i = 0; i < 6; i++) {
-//     const part = document.createElement("div")
-//     part.className = "relative bg-blue-900 rounded-xl aspect-square overflow-hidden flex items-center justify-center"
-//     if (equipeMembers[i]) {
-//       part.innerHTML = `
-//         <img src="${equipeMembers[i].image}" alt="${equipeMembers[i].name}" class="w-full h-full object-cover">
-//         `;
-//       const del = document.createElement("button")
-//       del.textContent = "X"
-//       del.className = "btn-del absolute top-2 right-2 bg-[#F5B942] rounded-full p-2 w-6 h-6 flex items-center justify-content text-xs fond-bold hover:bg-[#E5A932]"
-//       del.setAttribute("dataId", equipeMembers[i].id)
-//       del.addEventListener("click", () => {
-//         removeFromTeam(equipeMembers[i].id);
-//       });
-//       part.appendChild(del)
-//     }
-//     else {
-//       part.innerHTML = `<div class="absolute top-2 left-2 bg-[#F5B942] rounded-full w-6 h-6 flex items-center justify-content text-xs fond-bold">
-//       </div>`
-//     }
-//     equipeCont.appendChild(part)
-//   }
+  equipeMembers.push(monst)
+  // saveTeam()
+  message.textContent = `${monst.name} a été ajouté à votre equipe`
+  message.style.color = "#4ade80"
+  teamdisplay()
+  buttonsUpdate()
+}
+export function teamdisplay() {
+  const equipeCont = document.querySelector("#team #teamspace")
+  const title = document.querySelector("#team h2")
+  if (title) {
+    title.textContent = `Mon équipe (${equipeMembers.length}/6)`;
+    const equipe = document.querySelector("#team-count")
+    equipe.textContent = `${equipeMembers.length}`
+  }
+  equipeCont.innerHTML = ""
+  for (let i = 0; i < 6; i++) {
+    const part = document.createElement("div")
+    part.className = "relative bg-blue-900 rounded-xl aspect-square overflow-hidden flex items-center justify-center"
+    if (equipeMembers[i]) {
+      part.innerHTML = `
+        <img src="${equipeMembers[i].image}" alt="${equipeMembers[i].name}" class="w-full h-full object-cover">
+        `;
+      const del = document.createElement("button")
+      del.textContent = "X"
+      del.className = "btn-del absolute top-2 right-2 bg-[#F5B942] rounded-full p-2 w-6 h-6 flex items-center justify-content text-xs fond-bold hover:bg-[#E5A932]"
+      del.setAttribute("dataId", equipeMembers[i].id)
+      del.addEventListener("click", () => {
+        removeFromTeam(equipeMembers[i].id);
+      });
+      part.appendChild(del)
+    }
+    else {
+      part.innerHTML = `<div class="absolute top-2 left-2 bg-[#F5B942] rounded-full w-6 h-6 flex items-center justify-content text-xs fond-bold">
+      </div>`
+    }
+    equipeCont.appendChild(part)
+  }
 
-// }
+}
 
 
-// function removeFromTeam(idcard) {
-//   const message = document.querySelector("#teamMessage");
+export function removeFromTeam(idcard) {
+  const message = document.querySelector("#teamMessage");
 
-//   let name = "";
-//   for (let i = 0; i < equipeMembers.length; i++) {
-//     if (equipeMembers[i].id === idcard) {
-//       name = equipeMembers[i].name;
-//       break;
-//     }
-//   }
+  let name = "";
+  for (let i = 0; i < equipeMembers.length; i++) {
+    if (equipeMembers[i].id === idcard) {
+      name = equipeMembers[i].name;
+      break;
+    }
+  }
 
-//   // Keep only the cards that are NOT the one we want to delete
-//   equipeMembers = equipeMembers.filter(m => m.id !== idcard);
+  // Keep only the cards that are NOT the one we want to delete
+  equipeMembers = equipeMembers.filter(m => m.id !== idcard);
 
-//   if (name) {
-//     message.textContent = `${name} a été retiré de l'équipe.`;
-//     message.style.color = "#fbbf24";
-//   }
+  if (name) {
+    message.textContent = `${name} a été retiré de l'équipe.`;
+    message.style.color = "#fbbf24";
+  }
 
-//   teamdisplay();
-//   buttonsUpdate();
-// }
+  teamdisplay();
+  buttonsUpdate();
+}
 
 // // -------------------------------------------------------------
 // // 7. RÈGLES DE L'ÉQUIPE
@@ -488,68 +488,68 @@ export function filtreType() {
 // // une action est refusée, et un compteur (x/6).
 // // -------------------------------------------------------------
 
-// function buttonsUpdate() {
-//   const buttons = document.querySelectorAll(".btn-ajouter")
-//   buttons.forEach((btn) => {
-//     const idmonster = btn.getAttribute("dataId")
-//     let inTeam = false
-//     for (let i = 0; i < equipeMembers.length; i++) {
-//       if (equipeMembers[i].id === idmonster) {
-//         inTeam = true
-//         break
-//       }
-//     }
-//     if (equipeMembers.length >= 6) {
-//       btn.textContent = "Equipe Complet"
-//       btn.disabled = true;
-//       btn.classList.add("opacity-50", "cursor-not-allowed")
-//       return
-//     }
-//     else if (inTeam) {
-//       btn.textContent = "Déja ajouté"
-//       btn.disabled = true;
-//       btn.classList.add("opacity-50", "cursor-not-allowed")
-//     }
-//     else {
-//       btn.textContent = "Ajouter à l'équipe"
-//       btn.disabled = false;
-//       btn.classList.remove("opacity-50", "cursor-not-allowed")
-//     }
-//   })
-// }
+export function buttonsUpdate() {
+  const buttons = document.querySelectorAll(".btn-ajouter")
+  buttons.forEach((btn) => {
+    const idmonster = btn.getAttribute("dataId")
+    let inTeam = false
+    for (let i = 0; i < equipeMembers.length; i++) {
+      if (equipeMembers[i].id === idmonster) {
+        inTeam = true
+        break
+      }
+    }
+    if (equipeMembers.length >= 6) {
+      btn.textContent = "Equipe Complet"
+      btn.disabled = true;
+      btn.classList.add("opacity-50", "cursor-not-allowed")
+      return
+    }
+    else if (inTeam) {
+      btn.textContent = "Déja ajouté"
+      btn.disabled = true;
+      btn.classList.add("opacity-50", "cursor-not-allowed")
+    }
+    else {
+      btn.textContent = "Ajouter à l'équipe"
+      btn.disabled = false;
+      btn.classList.remove("opacity-50", "cursor-not-allowed")
+    }
+  })
+}
 // // -------------------------------------------------------------
 // // BONUS : LocalStorage, Fetch API, tri, comparaison
 // // -------------------------------------------------------------
 
 // //show tri
-// function showtri() {
-//   const containerCard = document.querySelector("#cardsMonster");
-//   const copy = creatures.slice();
-//   copy.sort((a, b) => (b.stats.atk + b.stats.def) - (a.stats.atk + a.stats.def));
-//   const filter = document.querySelector("#filters");
-//   const clickbtn = document.querySelector("#btn-sort");
+export function showtri(creatures) {
+  const containerCard = document.querySelector("#cardsMonster");
+  const copy = creatures.slice();
+  copy.sort((a, b) => (b.stats.atk + b.stats.def) - (a.stats.atk + a.stats.def));
+  const filter = document.querySelector("#filters");
+  const clickbtn = document.querySelector("#btn-sort");
 
-//   if (!clickbtn) {
-//     containerCard.innerHTML = "";
-//     filtreType();
-//     creerCards(creatures);
-//     return;
-//   }
+  if (!clickbtn) {
+    containerCard.innerHTML = "";
+    filtreType();
+    creerCards(creatures);
+    return;
+  }
 
-//   clickbtn.addEventListener("click", () => {
-//     containerCard.innerHTML = "";
-//     filter.querySelectorAll(".btn-filter").forEach(btn => {
-//       btn.style.background = "";
-//       btn.classList.remove("active");
-//     });
-//     clickbtn.style.background = "#F5B942";
-//     clickbtn.classList.add("active");
-//     creerCards(copy);
-//     filtreType();
-//     buttonsUpdate();
-//   });
-// }
-// showtri()
+  clickbtn.addEventListener("click", () => {
+    containerCard.innerHTML = "";
+    filter.querySelectorAll(".btn-filter").forEach(btn => {
+      btn.style.background = "";
+      btn.classList.remove("active");
+    });
+    clickbtn.style.background = "#F5B942";
+    clickbtn.classList.add("active");
+    creerCards(copy);
+    filtreType();
+    buttonsUpdate();
+  });
+}
+
 
 // // comparaison 2 cards
 // function fillCompareSelects() {
@@ -631,7 +631,7 @@ export function filtreType() {
 // // localStorage
 
 // // Save team to LocalStorage
-// function saveTeam() {
+// export function saveTeam() {
 //   localStorage.setItem("YoGiOh-team", JSON.stringify(equipeMembers));
 // }
 // function saveCreatures() {
@@ -640,13 +640,13 @@ export function filtreType() {
 
 
 // function loadData() {
-//   const savedTeam = localStorage.getItem("yugioh-team");
+//   const savedTeam = localStorage.getItem("YoGiOh-team");
 //   if (savedTeam) {
 //     equipeMembers = JSON.parse(savedTeam);
 //   }
-//   const savedCreatures = localStorage.getItem("yugioh-creatures");
-//   if (savedCreatures) {
-//     creatures = JSON.parse(savedCreatures);
-//   }
+//   // const savedCreatures = localStorage.getItem("yugioh-creatures");
+//   // if (savedCreatures) {
+//   //   creatures = JSON.parse(savedCreatures);
+//   // }
 // }
 
