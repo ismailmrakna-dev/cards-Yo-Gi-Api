@@ -46,33 +46,81 @@ function transObj(obj){
 
 // search from api Data
 
-export async function searchNameApi(name){
-     const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
-     const response= await fetch(url)
-     if(!response.ok){
-      throw new Error(`Response Error: ${response.status}`)
-     }
-     const result=await response.json()
-     const arr=result.data.map((obj)=>transObj(obj))
-     const searchTarget=arr.filter(monst =>  monst.name.toLowerCase().includes(name.toLowerCase()));
-     return searchTarget
-}
-   export async function filterTypeApi(type){
-     const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+// export async function searchNameApi(name){
+//      const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+//      const response= await fetch(url)
+//      if(!response.ok){
+//       throw new Error(`Response Error: ${response.status}`)
+//      }
+//      const result=await response.json()
+//      const arr=result.data.map((obj)=>transObj(obj))
+//      const searchTarget=arr.filter(monst =>  monst.name.toLowerCase().includes(name.toLowerCase()));
+//      return searchTarget
+// }
+
+
+//    export async function filterTypeApi(type){
+//      const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+//      try {
+//      const response= await fetch(url)
+//      if(!response.ok){
+//       throw new Error(`Response Error: ${response.status}`)
+//      }
+//      const result = await response.json()
+//      let arr=result.data.map((obj) => transObj(obj))
+     
+     
+//      const filterTarget=arr.filter((monst) =>{ 
+//       if(!monst.type) return false
+//       return monst.type.toLowerCase() === type.toLowerCase()});
+//       return filterTarget
+//     } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+  export async function filterAttributeApi(type,perPage=20,offset=0){
+    const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?attribute=${encodeURIComponent(type)}&num=${perPage}&offset=${offset}`;
      try {
      const response= await fetch(url)
      if(!response.ok){
       throw new Error(`Response Error: ${response.status}`)
      }
      const result = await response.json()
-     let arr=result.data.map((obj) => transObj(obj))
-     
-     
-     const filterTarget=arr.filter((monst) =>{ 
-      if(!monst.type) return false
-      return monst.type.toLowerCase() === type.toLowerCase()});
-      return filterTarget
+     const arr=result.data.map((obj) => transObj(obj))
+     console.log(arr)
+     return arr
     } catch (error) {
+    console.error(error.message);
+  }
+}
+ export async function filterTypeApi(type,perPage=20,offset=0){
+    const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?type=${encodeURIComponent(type)}&num=${perPage}&offset=${offset}`;
+     try {
+     const response= await fetch(url)
+     if(!response.ok){
+      throw new Error(`Response Error: ${response.status}`)
+     }
+     const result = await response.json()
+     const arr=result.data.map((obj) => transObj(obj))
+     console.log(arr)
+     return arr
+    } catch (error) {
+    console.error(error.message);
+  }
+}
+
+export async function searchNameApi(name, perPage=20, offset=0){
+     const url=`https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${encodeURIComponent(name.toLowerCase())}&num=${perPage}&offset=${offset}`;
+     try {
+     const response= await fetch(url)
+     if(!response.ok){
+      throw new Error(`Response Error: ${response.status}`)
+     }
+     const result=await response.json()
+     const arr=result.data.map((obj)=>transObj(obj))
+     console.log(arr)
+     return arr
+     } catch (error) {
     console.error(error.message);
   }
 }
