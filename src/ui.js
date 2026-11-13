@@ -550,6 +550,14 @@ export function showtri(creatures) {
   });
 }
 
+export function createBtn(number){
+  const btnCont=document.querySelector('#btns-load')
+  btnCont.innerHTML=""
+  btnCont.innerHTML=`<button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">prev</button>
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">${number}</button>
+          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">next</button>`
+}
+
 
 // // comparaison 2 cards
 // function fillCompareSelects() {
