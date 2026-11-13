@@ -1,10 +1,10 @@
 
-import { creerCards, searchNom,filtreType, showtri ,addToEquipe, removeFromTeam ,buttonsUpdate,teamdisplay} from "./ui.js"
+import { creerCards, searchNom, filtreType, showtri, buttonsUpdate, createBtn, createPagination } from "./ui.js"
 import { } from "./storage.js"
-import { loadData, getData ,searchNameApi,filterTypeApi } from "./services/api.js"
+import { loadData, getData, searchNameApi, filterTypeApi } from "./services/api.js"
 
-let arr1 = [] 
-arr1= await getData(0)
+// let arr1 = []
+// arr1 = await getData(0)
 
 
 const currentPage = window.location.pathname;
@@ -14,11 +14,21 @@ if (currentPage.includes("index.html")) {
 }
 
 function initHomePages() {
+    const filter = document.querySelector("#filters")
+    const search = document.querySelector("#search")
+
+
     console.log("Home Page");
     ///  paginagtion creation of cards Monsters
-    
-    filterTypeApi("water")
-    searchNameApi("dark")
+    getData(0)
+    const arr = loadData()
+    creerCards(arr)
+    searchNom()
+    filtreType()
+    showtri(arr)
+    buttonsUpdate()
+
+    ///  paginagtion creation of cards Monsters
     document.querySelector('#btns-load').addEventListener("click", (event) => {
         const btnCLick = event.target.closest(".loadMore")
         let offset = btnCLick.textContent
@@ -39,17 +49,66 @@ function initHomePages() {
         searchNom()
         filtreType()
         showtri(arr)
-        teamdisplay()
         buttonsUpdate()
+    })
+    // filter search in console
+    filterTypeApi("water")
+    searchNameApi("dark")
+
+    // filter event
+    filter.addEventListener("click", async (e) => {
+        const btnCLick = e.target.closest(".btn-filter")
+        // default Case
+        if (!btnCLick) {
+            getData(0)
+            const arr = loadData()
+            creerCards(arr)
+            searchNom()
+            filtreType()
+            showtri(arr)
+            buttonsUpdate()
+            return
+        }
+        let arrfiltre = []
+        arrfiltre = await filterTypeApi(btnCLick.textContent)
+        console.log(arrfiltre)
 
     })
-    getData(0)
-    const arr = loadData()
-    creerCards(arr)
-    searchNom()
-    filtreType()
-    showtri(arr)
-    teamdisplay()
-    buttonsUpdate()
+    // search event
+    let searchName = ""
+    let start = 0
+    let limit = start + 40
+    let page = 1
+
+    search.addEventListener("input", async (e) => {
+        const name = e.target.value.toLowerCase().trim()
+        searchName = name
+        console.log(name)
+    })
+
+    const btnSearch = document.querySelector("#btn-search")
+    btnSearch.addEventListener("click", async (event) => {
+        event.stopPropagation()
+    
+        // default Case
+        if (searchName === "") {
+            getData(0)
+            const arr = loadData()
+            creerCards(arr)
+            searchNom()
+            filtreType()
+            showtri(arr)
+            buttonsUpdate()
+            return
+        }
+        
+        createBtn()
+
+        let arrsearch = []
+        arrsearch = await searchNameApi(searchName)
+        console.log(arrsearch)
+        createBtn(1)
+        createPagination(arrsearch, 0, 40)
+    })
 
 }
