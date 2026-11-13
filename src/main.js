@@ -16,7 +16,8 @@ if (currentPage.includes("index.html")) {
 function initHomePages() {
     const filter = document.querySelector("#filters")
     const search = document.querySelector("#search")
-
+   
+    
 
     console.log("Home Page");
     ///  paginagtion creation of cards Monsters
@@ -102,13 +103,45 @@ function initHomePages() {
             return
         }
         
-        createBtn()
-
+        createBtn(1)
         let arrsearch = []
         arrsearch = await searchNameApi(searchName)
         console.log(arrsearch)
         createBtn(1)
+        const prevPage=document.querySelector('.prev-btn')
+        const nextPage=document.querySelector('.next-btn')
+        const numPage=document.querySelector('.Npage-btn')
         createPagination(arrsearch, 0, 40)
+        prevPage.addEventListener("click",(e)=>{
+            e.stopPropagation()
+            // if (!prevPage && prevPage) return
+            if (start-40 < 0){
+                start=0
+                page=1
+            }
+            else{
+                start-=40
+                page-=1
+            }
+            
+            createPagination(arrsearch, start, limit)
+            numPage.textContent=page
+        })
+        nextPage.addEventListener("click",(e)=>{
+            e.stopPropagation()
+            if (!nextPage && prevPage) return
+            if (start+40 <= arrsearch.length){
+                start+=40
+                page+=1
+            }
+            else{
+                limit = arrsearch.length
+            }
+            console.log(page)
+            createPagination(arrsearch, start, limit)
+            numPage.textContent=page
+        })
+        
     })
 
 }
