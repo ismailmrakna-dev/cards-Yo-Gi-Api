@@ -553,11 +553,14 @@ export function showtri(creatures) {
 export function createBtn(number){
   const btnCont=document.querySelector('#btns-load')
   btnCont.innerHTML=""
-  btnCont.innerHTML=`<button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">prev</button>
-          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">${number}</button>
-          <button class="loadMore p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">next</button>`
+  btnCont.innerHTML=`<button class="prev-btn p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">prev</button>
+          <button class="Npage-btn p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">${number}</button>
+          <button class="next-btn p-4 bg-[#F5B942] rounded-xl hover:bg-[#F5B942]/90" type="button">next</button>`
 }
-
+export async function createPagination(array, start=0, limit=0){
+      let arr =await array.slice(start, limit)
+      creerCards(arr)
+}
 
 // // comparaison 2 cards
 // function fillCompareSelects() {
