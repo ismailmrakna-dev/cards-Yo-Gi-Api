@@ -53,12 +53,13 @@ export async function searchNameApi(name){
       throw new Error(`Response Error: ${response.status}`)
      }
      const result=await response.json()
-     const arr=result.data
+     const arr=result.data.map((obj)=>transObj(obj))
      const searchTarget=arr.filter(monst =>  monst.name.toLowerCase().includes(name.toLowerCase()));
-     console.log(searchTarget)
+     return searchTarget
 }
-export async function filterTypeApi(type){
+   export async function filterTypeApi(type){
      const url="https://db.ygoprodeck.com/api/v7/cardinfo.php";
+     try {
      const response= await fetch(url)
      if(!response.ok){
       throw new Error(`Response Error: ${response.status}`)
@@ -70,5 +71,8 @@ export async function filterTypeApi(type){
      const filterTarget=arr.filter((monst) =>{ 
       if(!monst.type) return false
       return monst.type.toLowerCase() === type.toLowerCase()});
-     console.log(filterTarget)
+      return filterTarget
+    } catch (error) {
+    console.error(error.message);
+  }
 }
